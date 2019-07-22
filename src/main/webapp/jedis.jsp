@@ -14,7 +14,9 @@
     <title >JEDIS</title>
 </head>
 <body>
-<H1 class="text-danger" class="text-center">JEDIS list</H1>
+<H1 class="text-danger text-center">JEDIS
+    list</H1>
+<%--
 <div class="table-responsive">
     <table class="table table-bordered  table-striped">
         <thead class="thead-dark">
@@ -24,14 +26,6 @@
             <th scope="col">Surname</th>
         </tr>
 
-<%--
-        <%
-        List<Jedi> jediList= (List<Jedi>) request.getAttribute("jedilist");
-        for (Jedi jedi :jediList ) {
-            System.out.println(jedi.name + " "+ jedi.surname);
-        }
-        %>
---%>
 
         <c:forEach items="${jedilist}" var="jedi">
         <tr class="text-center" scope="row ">
@@ -41,6 +35,22 @@
         </tr>
         </c:forEach>
     </table>
+
+--%>
+    <ul>
+    <c:forEach items="${jedilist}" var="jedi">
+        <li><c:out value="${jedi.name}" />   (  <c:out value="${jedi.surname}" /> )</li>
+    </c:forEach>
+    </ul>
+        <%--
+                <%
+                List<Jedi> jediList= (List<Jedi>) request.getAttribute("jedilist");
+                for (Jedi jedi :jediList ) {
+                    System.out.println(jedi.name + " "+ jedi.surname);
+                }
+                %>
+        --%>
+
 </div>
 </body>
 </html>

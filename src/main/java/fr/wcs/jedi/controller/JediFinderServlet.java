@@ -19,18 +19,25 @@ public class JediFinderServlet extends HttpServlet {
 
     private final Logger slf4jLogger = LoggerFactory.getLogger(JediFinderServlet.class);
 
+    @Override
+    public void init() throws ServletException {
+        super.init();
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
+
+
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         slf4jLogger.info("Calling JDBC");
         List<Jedi> jediList = new ArrayList<>();
         TestJDBC jdbc= new TestJDBC();
         jediList= jdbc.execRequete(request);
+        if (false) response.sendError(500);  // Si pb retourne erreur serveur
         request.setAttribute("jedilist",jediList);
         request.getRequestDispatcher("/jedis.jsp").forward(request,response);
-
+        //response.getOutputStream().println("coucou");   // Affiche du texte dans la page web
     }
 }

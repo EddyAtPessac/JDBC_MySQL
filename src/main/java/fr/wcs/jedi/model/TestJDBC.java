@@ -15,6 +15,16 @@ public class TestJDBC {
     private List<String> messages = new ArrayList<String>();
     private final Logger slf4j = LoggerFactory.getLogger(TestJDBC.class);
 
+/*
+  static {  // Methode appell&eacute;e lors de la 1ere instanciation de la classe
+        try {
+            DriverManager.registerDriver(new Driver());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+*/
+
     public TestJDBC() {
         /* Chargement du driver JDBC pour MySQL */
         try {
